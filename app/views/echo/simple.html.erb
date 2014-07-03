@@ -1,0 +1,36 @@
+<%= form_tag echo_path, class: "form" do %>
+  <%= hidden_field_tag :template, File.basename(__FILE__) %>
+
+  <div class="challenge">
+    <p>Make the email and password fields appear at the top level</p>
+
+    <strong>Expected <code>params</code></strong>
+    <p>
+      <%= content_tag(:code, { 'email' => 'joe@example.com', 'password' => 'password'}) %>
+    </p>
+  </div>
+
+  <strong>Actual params are:</strong>
+  <p class="answer">
+    <%= content_tag(:code, @params_to_print) %>
+  </p>
+
+  <fieldset>
+    <legend>User Fields</legend>
+    <div>
+      <label for="email-field">Email</label>
+      <!-- BEGIN CHANGES -->
+      <input id="email-field" type="email" value="joe@example.com"/>
+      <!-- END CHANGES -->
+    </div>
+    <div>
+      <label for="password-field">Password</label>
+      <!-- BEGIN CHANGES -->
+      <input id="password-field" type="password" value="password"/>
+      <!-- END CHANGES -->
+    </div>
+  </fieldset>
+
+  <%= submit_tag "Submit" %>
+
+<% end %>

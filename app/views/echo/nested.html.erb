@@ -1,0 +1,36 @@
+<%= form_tag echo_path, class: "form" do %>
+  <%= hidden_field_tag :template, File.basename(__FILE__) %>
+
+  <div class="challenge">
+    <p>Make the name and address fields appear as</p>
+
+    <strong>Expected <code>params</code></strong>
+    <p>
+      <%= content_tag(:code, { 'organization' => { 'name' => "Acme, Inc.", 'address' => "15 Main St." } }) %>
+    </p>
+  </div>
+
+  <strong>Actual params are:</strong>
+  <p class="answer">
+    <%= content_tag(:code, @params_to_print) %>
+  </p>
+
+  <fieldset>
+    <legend>Organization Fields</legend>
+    <div>
+      <label for="name-field">Name</label>
+      <!-- BEGIN CHANGES -->
+      <input id="name-field" type="text" value="Acme, Inc."/>
+      <!-- END CHANGES -->
+    </div>
+    <div>
+      <label for="address-field">Address</label>
+      <!-- BEGIN CHANGES -->
+      <input id="address-field" type="text" value="15 Main St."/>
+      <!-- END CHANGES -->
+    </div>
+  </fieldset>
+
+  <%= submit_tag "Submit" %>
+
+<% end %>

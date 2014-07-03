@@ -1,0 +1,74 @@
+/*
+ *= require_tree .
+ *= require_self
+ */
+
+.container {
+  width: 960px;
+  margin: 0 auto;
+
+  &:after {
+    visibility: hidden;
+    display: block;
+    font-size: 0;
+    content: " ";
+    clear: both;
+    height: 0;
+  }
+}
+
+header {
+  background: navy;
+  padding: .5em;
+
+  a {
+    color: white;
+    text-decoration: none;
+  }
+}
+
+.logo {
+  float: left;
+  font-weight: bold;
+}
+
+.form {
+  margin: 2em auto;
+
+  .answer {
+    padding-left: 1em;
+  }
+
+  fieldset {
+    margin-bottom: 2em;
+  }
+
+  legend {
+    padding: 0 .5em;
+  }
+
+  div {
+    padding: .3em 0;
+  }
+
+  .challenge {
+    background: lightgoldenrodyellow;
+    padding: 1em;
+    margin-bottom: 1em;
+
+    strong {
+      display: block;
+    }
+  }
+
+  label {
+    display: inline-block;
+    width: 6em;
+  }
+
+  label.checkbox {
+    display: block;
+    width: auto;
+    margin-bottom: .5em;
+  }
+}

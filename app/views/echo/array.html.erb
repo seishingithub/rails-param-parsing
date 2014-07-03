@@ -1,0 +1,39 @@
+<%= form_tag echo_path, class: "form" do %>
+  <%= hidden_field_tag :template, File.basename(__FILE__) %>
+
+  <div class="challenge">
+    <p>
+      Make the category checkboxes come through as an array in <code>params[:organization][:categories]</code>
+    </p>
+
+    <strong>Expected <code>params</code></strong>
+    <p>
+      <%= content_tag(:code, { 'organization' => { 'categories' => %w(Automotive Education Finance) } }) %>
+    </p>
+  </div>
+
+  <strong>Actual params are:</strong>
+  <p class="answer">
+    <%= content_tag(:code, @params_to_print) %>
+  </p>
+
+  <fieldset>
+    <legend>Categories</legend>
+    <div>
+      <% %w(Automotive Technology Education Science Finance Pharmaceutical).each_with_index do |category, index| %>
+        <label class="checkbox">
+
+          <!-- BEGIN CHANGES -->
+          <input type="checkbox" <%= index.even? ? "checked" : nil %> />
+          <!-- END CHANGES -->
+
+          <%= category %>
+        </label>
+      <% end %>
+    </div>
+
+  </fieldset>
+
+  <%= submit_tag 'Submit' %>
+
+<% end %>

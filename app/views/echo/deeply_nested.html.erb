@@ -1,0 +1,36 @@
+<%= form_tag echo_path, class: "form" do %>
+  <%= hidden_field_tag :template, File.basename(__FILE__) %>
+
+  <div class="challenge">
+    <p>Make the name and address fields appear as:</p>
+
+    <strong>Expected <code>params</code></strong>
+    <p>
+      <%= content_tag(:code, { 'patient' => { 'home' => { 'address' => { 'city' => "Cleveland", 'state' => "Ohio" } } } }) %>
+    </p>
+  </div>
+
+  <strong>Actual params are:</strong>
+  <p class="answer">
+    <%= content_tag(:code, @params_to_print) %>
+  </p>
+
+  <fieldset>
+    <legend>Patient Fields</legend>
+    <div>
+      <label for="city-field">City</label>
+      <!-- BEGIN CHANGES -->
+      <input id="city-field" type="text" value="Cleveland"/>
+      <!-- END CHANGES -->
+    </div>
+    <div>
+      <label for="state-field">State</label>
+      <!-- BEGIN CHANGES -->
+      <input id="state-field" type="text" value="Ohio"/>
+      <!-- END CHANGES -->
+    </div>
+  </fieldset>
+
+  <%= submit_tag "Submit" %>
+
+<% end %>
